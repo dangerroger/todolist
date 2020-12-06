@@ -5,7 +5,6 @@ import unittest
 
 #from webdriver_manager.firefox import GeckoDriverManager
 #browser = webdriver.Firefox()
-
 #browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
 #broweser = webdriver.Firefox()
@@ -78,8 +77,8 @@ class NewVisitorTest(unittest.TestCase):
 
 #The page updates and now shows both items on her lists
 
-        self.check_for_row_in_list_table('1: buy peacok feathers')
-        self.check_for_row_in_list_table('2: use peacock feathers to make a fly')
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
 
 
         #table = self.browser.find_element_by_id('id_list_table')

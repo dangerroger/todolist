@@ -9,6 +9,8 @@ def home_page(request):
         Item.objects.create(text=request.POST['item_text'])
         return redirect('/')
 
+    items = Item.objects.all()
+
     #else:
         #new_item_text = ''
 
@@ -17,7 +19,7 @@ def home_page(request):
         #item.text = request.POST.get('item_text', '')
         #item.save()
 
-    return render(request,'home.html')
+    return render(request,'home.html', {'items' : items })
 
     #, {
             #'new_item_text': new_item_text
