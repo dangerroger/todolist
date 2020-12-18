@@ -18,11 +18,14 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
     def test_home_page_displays_all_list_items (self):
-        Item.objects.create(text='itemy 1')
-        Item.objects.create(text='itemy 2')
+        Item.objects.create(text='itemey 1')
+        Item.objects.create(text='itemey 2')
 
         request = HttpRequest()
         response = home_page(request)
+
+        self.assertIn('itemey 1', response.content.decode())
+        self.assertIn('itemey 2', response.content.decode())
 
         #old test for the above
         #def test_home_page_returns_correct_html(self):
@@ -50,8 +53,7 @@ class HomePageTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
 
-        self.assertIn('itemy 1', response.content.decode())
-        self.assertIn('itemy 2', response.content.decode())
+
 
 
 
