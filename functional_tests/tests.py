@@ -106,8 +106,8 @@ class NewVisitorTest(LiveServerTestCase):
         # Both function below changed to wait function created in row 27
         #self.check_for_row_in_list_table('1: Buy peacock feathers')
         #self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
-        self.wait_for_row_in_list_table('1: Buy peacock feathers')
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
 
         #table = self.browser.find_element_by_id('id_list_table')
@@ -179,6 +179,6 @@ class NewVisitorTest(LiveServerTestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+   unittest.main()
 
 #browser.quit()
