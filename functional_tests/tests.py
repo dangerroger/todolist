@@ -1,4 +1,5 @@
-from django.test import LiveServerTestCase
+#from django.test import LiveServerTestCase - changed to StaticLiverServerTestCase after importing Bootstrap page 150
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -13,7 +14,9 @@ MAX_WAIT = 10
 #browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
 #broweser = webdriver.Firefox()
-class NewVisitorTest(LiveServerTestCase):
+#class NewVisitorTest(LiveServerTestCase): changed to StaticLiveServerTestCase
+class NewVisitorTest(StaticLiveServerTestCase):
+
 # class changed to LiveServerTestCase
 #class NewVisitorTest(unittest.TestCase):
 
@@ -175,10 +178,35 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
     # satisfied, they both go back to sleep
+    def test_layout_and_styling(self):
+        #Edith goes to home page
+
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024,768)
+
+        #She notices inputbox is nicely centred
+
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+        inputbox.location['x'] + inputbox.size['width']/2,
+        512,
+        delta=50
+                )
+        # She starts a new list and sees that the inputbox is nicely centred to
 
 
+        inputbox.send_keys('testing')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: testing')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+        inputbox.location['x'] + inputbox.size['width'] /2,
 
-if __name__ == '__main__':
-   unittest.main()
+        512,
+        delta=50
+        )
+
+#if __name__ == '__main__':
+   #unittest.main()
 
 #browser.quit()
