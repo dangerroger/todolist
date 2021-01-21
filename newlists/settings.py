@@ -25,7 +25,8 @@ SECRET_KEY = 'v0dxc10)meboo$kq(i+tgss65hwl-)2t2(3#aid9&8x==8dp5m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#Allowed host changed to * in chapter 9 as a hack to get the site working 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
