@@ -23,10 +23,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v0dxc10)meboo$kq(i+tgss65hwl-)2t2(3#aid9&8x==8dp5m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#updated in chapter 10 to switch to production
+if 'DJANGO_DEBUG_FALSE' in os.environ:
+    #DEBUG = True
+    DEBUG =  False
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+    ALLOWED_HOSTS = [os.environ['SITENAME']]
 
-#Allowed host changed to * in chapter 9 as a hack to get the site working 
-ALLOWED_HOSTS = ['*']
+else:
+    DEBUG =  True
+    SECRET_KEY = 'insecure-key-for-dev'
+    ALLOWED_HOSTS = []
+
+#Allowed host changed to * in chapter 9 as a hack to get the site working
+#ALLOWED_HOSTS = ['*']
 
 
 # Application definition
