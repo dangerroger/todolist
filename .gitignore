@@ -2,3 +2,5 @@ db.sqlite3 bin include geckodriver.log lib lib64 share
 __pycache__ *.pyc
 /static
 .env
+.geckodriver.log
+.share
