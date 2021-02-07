@@ -1,0 +1,17 @@
+[unit]
+Description=Gunicorn server for DOMAIN
+
+[Service]
+Restart=on-failure
+User=rahul
+WorkingDirectory=/home/rahul/sites/DOMAIN
+EnvironmentFile=/home/rahul/sites/Domain.env
+
+ExecStart=/home/rahul/sites/Domain/virtualenv/bin/gunicorn \
+--bind unix:/tmp/DOMAIN.socket \
+newlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+# Generate a new site by doing a find and replace on Domain
